@@ -4,27 +4,27 @@
  * */
 
 const REQUIRED = 'required'; // Fails if the field is an empty array, empty string, null or false.
-const REQUIRED_IF = 'required_if'; // The field is required when any of the other fields is not empty() in the data.
+const REQUIRED_IF = 'required_if'; // The field is required when any of the other fields are not empty.
 const PERMIT_EMPTY = 'permit_empty'; // Allows the field to receive an empty array, empty string, null or false.
-const REQUIRED_IF_NOT = 'required_if_not'; // The field is required when any of the other fields is empty() in the data.
+const REQUIRED_IF_NOT = 'required_if_not'; // The field is required when any of the other fields are empty .
 
 const EMAIL = 'email'; // Fails if field does not contain a valid email address.
 const NUMERIC = 'numeric'; // Fails if field contains anything other than numeric characters.
 const IN_LIST = 'in_list'; // Fails if field is not within a predetermined list.
-const UNCHECKED = 'unchecked'; // Fails if the unchecked input it's checked
-const LESS_THAN = 'less_than'; // Fails if field is greater than or equal to the parameter value or not numeric.
+const UNCHECKED = 'unchecked'; // Fails if the input it's checked
+const LESS_THAN = 'less_than'; // Fails if field is greater than or equal to the parameter value or not a numeric value.
 const MIN_LENGTH = 'min_length'; // Fails if field is shorter than the parameter value.
 const MAX_LENGTH = 'max_length'; // Fails if field is longer than the parameter value.
 const NOT_IN_LIST = 'not_in_list'; // Fails if field is within a predetermined list.
-const GREATER_THAN = 'greater_than'; // Fails if field is less than or equal to the parameter value or not numeric.
+const GREATER_THAN = 'greater_than'; // Fails if field is less than or equal to the parameter value or not a numeric value.
 
-let input; // The input to check
-let errorLog = ""; // This error will be showed.
+let input;
+let errorLog = "";
 let finalValid = true;
 let CLASS_IS_INVALID; // This class will be added when the input is invalid
 
 /**
- * @param rules All the rules and elements to check
+ * @param rules All the rules and elements to validate
  * @param invalidClass The class the input will have if it's invalid
  * */
 export function validateRun(rules, invalidClass = "is-invalid") {
@@ -35,12 +35,11 @@ export function validateRun(rules, invalidClass = "is-invalid") {
 
     if(typeof rules !== 'object') return 'Rules must be an object';
 
-    // Starter bucle
     for (const key in rules) {
         let exist = true;
         input = document.getElementById(key);
 
-        // Check if input exist
+        // Check if input exists
         if(!input){
             exist = false;
             finalValid = false;
@@ -68,11 +67,11 @@ export function validateRun(rules, invalidClass = "is-invalid") {
 // Initial of the rules validation
 function rulesManager(rulesList) {
     const rules = rulesList.split("|"); // Separate all rules.
-    const required = rules[0]; // The value that says if the request it's required or not
+    const required = rules[0]; // The value that decides if the request it's required or not
 
     // The fist parameter must be the required
     if(!required.includes(REQUIRED_IF + '[') && required !== PERMIT_EMPTY && required !== REQUIRED && !required.includes(REQUIRED_IF_NOT + '['))  {
-        return {valid: false, err: "First param of the rule must be if the input is required, permit_empty, required_if, required_if_not."}
+        return {valid: false, err: "First param of the rule must be: required, permit_empty, required_if, required_if_not."}
     }
 
     // If the input it's required check if it has values
@@ -111,7 +110,7 @@ function rulesManager(rulesList) {
 
     if(rulesCount > 1) { // base 1 because the 0 it's the "require"
         for (let i = 1; i < rulesCount; i++) {
-            // If the input it's permit_empty only we need to checked if it's value !== ""
+            // If the input it's permit_empty we need to check if it's value !== ""
             if(required !== PERMIT_EMPTY || !baseInputEmpty()) {
                 const response = extraRules(rules[i]);
                 if (!response.valid) return {valid: response.valid, err: response.msg};
