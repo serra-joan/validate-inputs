@@ -171,14 +171,14 @@ function extraRules(rule) {
                 break;
 
             case GREATER_THAN:
-                if(parseInt(input.value) <= parseInt(ruleValue)) {
+                if(parseFloat(input.value) <= parseFloat(ruleValue)) {
                     valid = false;
                     msg = `must be greater than ${ruleValue}`;
                 }
                 break;
 
             case LESS_THAN:
-                if(parseInt(input.value) >= parseInt(ruleValue)) {
+                if(parseFloat(input.value) >= parseFloat(ruleValue)) {
                     valid = false;
                     msg = `must be less than ${ruleValue}`;
                 }
@@ -242,7 +242,7 @@ function addInvalidClass() {
 // Remove from all elements the class CLASS_IS_INVALID
 function removeInvalid() {
     if(CLASS_IS_INVALID && CLASS_IS_INVALID !== "") {
-        const oldInvalids = document.querySelectorAll(".${CLASS_IS_INVALID}");
+        const oldInvalids = document.querySelectorAll(`.${CLASS_IS_INVALID}`);
         const elementsCount = oldInvalids.length;
 
         for (let i = 0; i < elementsCount; i++) {
