@@ -1,0 +1,19 @@
+{
+  "name": "validate-inputs",
+  "version": "1.0.0",
+  "description": "script diseñado para ayudar a validar una gran cantidad de inputs HTML5. Está orientado a valores simples con una capa de personalización mínima. Todo el script esta inspirado en el sistema de validación de Codeigniter 4",
+  "main": "validation-inputs.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serra-joan/validate-inputs.git"
+  },
+  "author": "serra-joan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serra-joan/validate-inputs/issues"
+  },
+  "homepage": "https://github.com/serra-joan/validate-inputs#readme"
+}
