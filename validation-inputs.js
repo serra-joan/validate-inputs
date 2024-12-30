@@ -19,6 +19,7 @@ const NOT_IN_LIST = 'not_in_list'; // Fails if field is within a predetermined l
 const EQUAL_THAN = 'equal_than'; // Fails if field is not equal to the parameter value or not a numeric value.
 const LESS_THAN = 'less_than'; // Fails if field is greater than or equal to the parameter value or not a numeric value.
 const GREATER_THAN = 'greater_than'; // Fails if field is less than or equal to the parameter value or not a numeric value.
+const DATE = 'date'; // Fails if field is not a valid date.
 
 let input;
 let errorLog = "";
@@ -141,6 +142,7 @@ function extraRules(rule) {
     }else if(rule === EMAIL) ruleType = EMAIL;
     else if(rule === NUMERIC) ruleType = NUMERIC;
     else if(rule === UNCHECKED) ruleType = UNCHECKED;
+    else if(rule === DATE) ruleType = DATE;
 
     if(ruleType !== undefined) {
         switch (ruleType) {
@@ -221,6 +223,16 @@ function extraRules(rule) {
                     valid = false;
                     msg = `must be a number`;
                 }
+                break;
+
+            case DATE:
+                const date = new Date(input.value);
+
+                if(isNaN(date.getTime())) {
+                    valid = false;
+                    msg = `must be a valid date`;
+                }
+
                 break;
         }
 
