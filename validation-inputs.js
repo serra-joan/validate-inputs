@@ -13,6 +13,7 @@ const NUMERIC = 'numeric'; // Fails if field contains anything other than numeri
 const IN_LIST = 'in_list'; // Fails if field is not within a predetermined list.
 const UNCHECKED = 'unchecked'; // Fails if the input it's checked
 const LESS_THAN = 'less_than'; // Fails if field is greater than or equal to the parameter value or not a numeric value.
+const LENGTH = 'length'; // Fails if field is not exactly the parameter value.
 const MIN_LENGTH = 'min_length'; // Fails if field is shorter than the parameter value.
 const MAX_LENGTH = 'max_length'; // Fails if field is longer than the parameter value.
 const NOT_IN_LIST = 'not_in_list'; // Fails if field is within a predetermined list.
@@ -155,6 +156,13 @@ function extraRules(rule) {
                 if(notList.includes(input.value)) {
                     valid = false;
                     msg = `can't contains ${ruleValue}`;
+                }
+                break;
+
+            case LENGTH:
+                if(input.value.length !== parseInt(ruleValue)) {
+                    valid = false;
+                    msg = `length must be exactly ${ruleValue}`;
                 }
                 break;
 
