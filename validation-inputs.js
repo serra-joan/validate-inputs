@@ -1,5 +1,5 @@
 /**
- * Validation inputs v1.1
+ * Validation inputs v2
  * @return Object { valid: bool, msg: string (text errors in ul/li format) }
  * */
 
