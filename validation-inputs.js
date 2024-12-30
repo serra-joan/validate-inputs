@@ -12,11 +12,12 @@ const EMAIL = 'email'; // Fails if field does not contain a valid email address.
 const NUMERIC = 'numeric'; // Fails if field contains anything other than numeric characters.
 const IN_LIST = 'in_list'; // Fails if field is not within a predetermined list.
 const UNCHECKED = 'unchecked'; // Fails if the input it's checked
-const LESS_THAN = 'less_than'; // Fails if field is greater than or equal to the parameter value or not a numeric value.
 const LENGTH = 'length'; // Fails if field is not exactly the parameter value.
 const MIN_LENGTH = 'min_length'; // Fails if field is shorter than the parameter value.
 const MAX_LENGTH = 'max_length'; // Fails if field is longer than the parameter value.
 const NOT_IN_LIST = 'not_in_list'; // Fails if field is within a predetermined list.
+const EQUAL_THAN = 'equal_than'; // Fails if field is not equal to the parameter value or not a numeric value.
+const LESS_THAN = 'less_than'; // Fails if field is greater than or equal to the parameter value or not a numeric value.
 const GREATER_THAN = 'greater_than'; // Fails if field is less than or equal to the parameter value or not a numeric value.
 
 let input;
@@ -176,6 +177,13 @@ function extraRules(rule) {
                 if(input.value.length < parseInt(ruleValue)) {
                     valid = false;
                     msg = `min length must be ${ruleValue}`;
+                }
+                break;
+
+            case EQUAL_THAN:
+                if(parseFloat(input.value) !== parseFloat(ruleValue)) {
+                    valid = false;
+                    msg = `must be equal than ${ruleValue}`;
                 }
                 break;
 
