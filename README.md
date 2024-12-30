@@ -26,17 +26,19 @@ Para ejecutar este validador, primero debes definir las reglas necesarias. Las r
 
 #### Reglas Adicionales
 
-| Regla               | Descripción                                               | Aplicación                  |
-|---------------------|-----------------------------------------------------------|-----------------------------|
-| `email`             | Error si el valor no tiene una estructura de email         | `email`                     |
-| `numeric`           | Error si el valor no es numérico                           | `numeric`                   |
-| `in_list`           | Error si el valor no está en la lista                      | `in_list[option_1,option_2,…]` |
-| `not_in_list`       | Error si el valor está en la lista                         | `not_in_list[option_1,option_2,…]` |
-| `unchecked`         | Error si el valor objetivo está seleccionado                | `unchecked[input_objective]` |
-| `less_than`         | Error si el valor es igual o mayor que el deseado           | `less_than[100]`            |
-| `greater_than`      | Error si el valor es igual o menor que el deseado           | `greater_than[50]`         |
-| `min_length`        | Error si el valor contiene menos caracteres que el deseado  | `min_length[150]`          |
-| `max_length`        | Error si el valor contiene más caracteres que el deseado    | `max_length[200]`          |
+| Regla          | Descripción                                                | Aplicación                       |
+|----------------|------------------------------------------------------------|----------------------------------|
+| `email`        | Error si el valor no tiene una estructura de email         | `email`                          |
+| `numeric`      | Error si el valor no es numérico                           | `numeric`                        |
+| `in_list`      | Error si el valor no está en la lista                      | `in_list[option_1,option_2,…]`   |
+| `not_in_list`  | Error si el valor está en la lista                         | `not_in_list[option_1,option_2,…]` |
+| `unchecked`    | Error si el valor está seleccionado                | `unchecked`       |
+| `less_than`    | Error si el valor es igual o mayor que el deseado          | `less_than[100]`                 |
+| `greater_than` | Error si el valor es igual o menor que el deseado          | `greater_than[50]`               |
+| `equal_than`   | Error si el valor es diferente al deseado                  | `equal_than[50]`               |
+| `min_length`   | Error si el valor contiene menos caracteres que el deseado | `min_length[150]`                |
+| `max_length`   | Error si el valor contiene más caracteres que el deseado   | `max_length[200]`                |
+| `length`       | Error si el valor no contiene los caracteres deseados | `length[10]`                     |
 
 ## Ejecución de Validación
 
