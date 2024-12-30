@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test script</title>
+
+    <style>
+      body {
+        box-sizing: border-box;
+        height: 100vh;
+      }
+      .container-inputs {
+        display: flex;
+        height: 50vh;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+      }
+      input {
+        display: block;
+        margin: 10px 0;
+      }
+      .is-invalid {
+        border: 1px solid red;
+      }
+
+    </style>
+
+</head>
+<body>
+    <div class="container-inputs">
+      <div>
+        <input type="text" name="name" id="name" placeholder="Name">
+        <input type="text" name="email" id="email" placeholder="Email">
+        <input type="text" name="phone" id="phone" placeholder="Phone">
+        <input type="text" name="address" id="address" placeholder="Address">
+        <input type="text" name="zip" id="zip" placeholder="Zip">
+        <input type="text" name="zip" id="date" placeholder="date">
+        <select id="country">
+            <option value="Spain">Spain</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+        </select>
+        <label for="acceptConditions" style="display: flex; align-items: center; gap: 10px">
+          <input type="checkbox" id="acceptConditions">
+            Accept conditions
+        </label>
+      </div>
+      <div>
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+
+  <div>
+    <p id="message"></p>
+  </div>
+
+
+</body>
+<script type="module">
+  import { validateRun } from './validation-inputs.js';
+
+  const btnStartTest = document.getElementById('submit');
+
+  btnStartTest.addEventListener('click', () => {
+      const validate = validateRun(loadRules())
+
+      console.log("valid: ", validate.valid)
+      console.log("message: ", validate.msg)
+
+      document.getElementById('message').innerHTML = validate.msg
+  })
+
+
+  function loadRules() {
+    return {
+      ["name"]: {label: "name", rules: "required|max_length[50]"},
+      ["email"]: {label: "email", rules: "required|email"},
+      ["phone"]: {label: "phone", rules: "required|equal_than[9]"},
+      ["address"]: {label: "address", rules: "required|length[4]"},
+      ["zip"]: {label: "zip", rules: "required|numeric"},
+      ["date"]: {label: "date", rules: "required|date"},
+      ["country"]: {label: "country", rules: "required"},
+      ["acceptConditions"]: {label: "acceptConditions", rules: "permit_empty|unchecked"}
+    }
+  }
+
+</script>
+</html>
