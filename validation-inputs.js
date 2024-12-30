@@ -138,6 +138,7 @@ function extraRules(rule) {
 
     }else if(rule === EMAIL) ruleType = EMAIL;
     else if(rule === NUMERIC) ruleType = NUMERIC;
+    else if(rule === UNCHECKED) ruleType = UNCHECKED;
 
     if(ruleType !== undefined) {
         switch (ruleType) {
@@ -185,15 +186,9 @@ function extraRules(rule) {
                 break;
 
             case UNCHECKED:
-                const unchecked = ruleValue.split(',');
-                const countElements = unchecked.length;
-
-                for (let i = 0; i < countElements; i++) {
-                    if(document.getElementById(unchecked[i]).checked) {
-                        valid = false;
-                        msg = `${ruleValue} must be unchecked`;
-                        break;
-                    }
+                if(input.checked) {
+                    valid = false;
+                    msg = `must be unchecked`;
                 }
                 break;
 
